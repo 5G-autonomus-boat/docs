@@ -1,0 +1,14 @@
+cat /etc/systemd/system/mavproxy.service
+
+[Unit]
+Description=Mavproxy
+After=network.target
+
+[Service]
+type=simple
+User=Admin
+WorkingDirectory=/home/admin/mavproxy
+ExecStart=/home/admin/mavproxy/bin/python /home/admin/mavproxy/bin/mavproxy.py --master /dev/ttyS0 --out 10.111.1.125:14550 -- daemon
+
+[Install]
+WantedBy=multi-user.target
